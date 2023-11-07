@@ -1,5 +1,5 @@
 const CONSTANTS = {
-  API_BASE_URL: "http://localhost:8080/api/v1/",
+  API_BASE_URL: "https://theme-switcher-6i7a.onrender.com/api/v1/",
   DEFAULT_ERROR_MESSAGE:
     "Something went wrong, please try again after some time",
   THEMES: {
