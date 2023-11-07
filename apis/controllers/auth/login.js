@@ -41,7 +41,8 @@ const login = async (req, res) => {
   res.cookie("token", token, {
     maxAge: 3_600 * 1_000,
     httpOnly: false,
-    sameSite: "None", // Since backend and frontend are hosted on different domains
+    sameSite: "None", // Since backend and frontend are hosted on different domains,
+    secure: true,
     path: "/",
   });
   res.send("Login successful");
