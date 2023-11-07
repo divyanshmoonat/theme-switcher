@@ -38,7 +38,8 @@ app.use(`/api/${apiVersion}/auth`, authRoutes);
 app.use(`/api/${apiVersion}/user`, userRoutes);
 
 app.use((err, req, res, next) => {
-  console.log("SOME ERROR OCCURED");
+  console.log("SOME ERROR OCCURED", err);
+  // We can log the error to files or ELK to analyze them later
   res
     .status(500)
     .json({
