@@ -44,7 +44,7 @@ const login = async (req, res) => {
     sameSite: "None", // Since backend and frontend are hosted on different domains,
     secure: true,
     path: "/",
-    domain: ".netlify.app"
+    domain: "theme-switcher-ui.onrender.com"
   });
   res.send("Login successful");
 };

@@ -27,7 +27,7 @@ app.use(cookieParser());
 app.use(
   cors({
     credentials: true,
-    origin: "https://654a82188590b80076adc329--melodic-tartufo-63b28f.netlify.app",
+    origin: "https://theme-switcher-ui.onrender.com",
   })
 );
 
