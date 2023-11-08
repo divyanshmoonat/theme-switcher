@@ -14,6 +14,7 @@ import { AuthContext } from "../../context/authContext";
 
 const Login = () => {
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { context, setContext } = useContext(AuthContext);
   useEffect(() => {
@@ -24,17 +25,19 @@ const Login = () => {
 
   const onFinish = async (values) => {
     setError("");
+    setLoading(true);
     try {
       await axios.post(`${CONSTANTS.API_BASE_URL}auth/login`, values, {
         withCredentials: true,
       });
-      const token = helpers.getCookie("token");
+            const token = helpers.getCookie("token");
       const tokenData = jwtDecode(token);
       setContext({ ...context, isAuthenticated: true, theme: tokenData.theme });
     } catch (err) {
       console.error(err);
       setError(err.response.data.message || CONSTANTS.DEFAULT_ERROR_MESSAGE);
     }
+    setLoading(false);
   };
 
   return (
@@ -82,7 +85,7 @@ const Login = () => {
           </Form.Item>
           <Typography.Text type="danger">{error}</Typography.Text>
           <Form.Item>
-            <Button type="primary" htmlType="submit" block>
+            <Button loading={loading} type="primary" htmlType="submit" block>
               Log In
             </Button>
           </Form.Item>
